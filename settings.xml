@@ -1,0 +1,52 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+
+
+    <mirrors>
+        <!-- Mirror para Maven Central -->
+        <!-- Otros mirrors si es necesario -->
+        <mirror>
+          <id>maven-default-http-blocker</id>
+          <mirrorOf>external:http:*</mirrorOf>
+          <url>https://repo1.maven.org/maven2</url>
+          <blocked>false</blocked>
+        </mirror>
+        <mirror>
+          <id>central</id>
+          <name>Maven Central HTTPS Mirror</name>
+          <url>https://repo1.maven.org/maven2</url>
+          <mirrorOf>central</mirrorOf>
+          <blocked>false</blocked>
+        </mirror>
+    </mirrors>
+
+    <profiles>
+        <!-- Perfil de construcción para Sakai 12 -->
+        <profile>
+            <id>sakai12</id>
+            <repositories>
+                <!-- Repositorio para artefactos de Sakai 12 -->
+                <repository>
+                    <id>sakai12-repo</id>
+                    <url>https://source.sakaiproject.org/maven2/</url>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <!-- Repositorio para plugins de Maven de Sakai 12 -->
+                <pluginRepository>
+                    <id>sakai12-plugin-repo</id>
+                    <url>https://source.sakaiproject.org/maven2/</url>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+        <!-- Otros perfiles si es necesario -->
+    </profiles>
+
+    <activeProfiles>
+        <!-- Perfil activo para la construcción de Sakai 12 -->
+        <activeProfile>sakai12</activeProfile>
+    </activeProfiles>
+
+</settings>
